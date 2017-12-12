@@ -79,12 +79,13 @@ var education = {
 	}
 	]
 };
-var projects ={
+var projects = {
 	'python':[
 	{
 		'name': 'some name',
 		'description': 'something about it',
-		'url': 'url'
+		'url': 'url',
+		'picture': 'http://via.placeholder.com/250x250'
 	}]
 };
 var bioPic = HTMLbioPic.replace('%data%', bio.picture);
@@ -135,3 +136,21 @@ function inName(name){
 
 	return fName + ' ' + lName;
 };
+
+projects.display = function() {
+	 
+	for(each in projects.python){
+	// console.log('done');
+	$('#projects').append(HTMLprojectStart);
+	var formattedTitle = HTMLprojectTitle.replace('%data%', projects.python[each].name);
+	var formattedImage = HTMLprojectImage.replace('%data%', projects.python[each].picture);
+	//var formattedDate = HTMLworkDates.replace('%data%', work.jobs[each].date);
+	var formattedDescription = HTMLprojectDescription.replace('%data%', projects.python[each].description);
+	$('.project-entry:last').append(formattedTitle);
+	$('.project-entry:last').append(formattedDescription);
+	$('.project-entry:last').append(formattedImage);	
+	
+	};
+};
+
+projects.display();
